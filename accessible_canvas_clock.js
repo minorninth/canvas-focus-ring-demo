@@ -85,19 +85,19 @@ function drawClockAtTime(hh, mm, ss) {
 
   // Hour and minute focus rings.
 
-  if (ctx.drawSystemFocusRing) {
+  if (ctx.drawFocusIfNeeded) {
     ctx.save();
     ctx.rotate(hourAngle);
     ctx.beginPath();
     ctx.rect(-2, -22, 4, 28);
-    ctx.drawSystemFocusRing(document.getElementById('hour'));
+    ctx.drawFocusIfNeeded(document.getElementById('hour'));
     ctx.restore();
 
     ctx.save();
     ctx.rotate(minAngle);
     ctx.beginPath();
     ctx.rect(-2, -34, 4, 44);
-    ctx.drawSystemFocusRing(document.getElementById('minute'));
+    ctx.drawFocusIfNeeded(document.getElementById('minute'));
     ctx.restore();
   }
 
@@ -211,7 +211,7 @@ function onClick(evt) {
 function load() {
   var clock = document.getElementById('clock');
   var ctx = clock.getContext('2d');
-  if (!ctx.drawSystemFocusRing) {
+  if (!ctx.drawFocusIfNeeded) {
     document.getElementById('unsupported').hidden = false;
   }
 
